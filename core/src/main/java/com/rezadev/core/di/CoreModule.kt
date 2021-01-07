@@ -58,7 +58,6 @@ val networkModule = module {
         retrofit.create(ApiService::class.java)
     }
 }
-
 val repositoryModule = module {
     single { LocalDataSource(get()) }
     single { RemoteDataSource(get()) }
