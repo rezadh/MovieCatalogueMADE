@@ -1,12 +1,10 @@
 package com.rezadev.core.data.source.local.entity
 
-import android.os.Parcelable
 import androidx.annotation.NonNull
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@kotlinx.parcelize.Parcelize
 @Entity(tableName = "movies_table")
 data class MovieEntity (
     @PrimaryKey
@@ -32,4 +30,4 @@ data class MovieEntity (
     @ColumnInfo(name = "isFavorite")
     var isFavorite: Boolean = false
 
-): Parcelable
+)

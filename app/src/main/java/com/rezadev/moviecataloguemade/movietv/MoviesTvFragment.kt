@@ -39,18 +39,17 @@ class MoviesTvFragment : Fragment() {
                 startActivity(intent)
             }
             movieTveViewModel.movieTv.observe(viewLifecycleOwner, { movieTv ->
-                if (movieTv != null) {
-                    when (movieTv) {
-                        is Resource.Loading -> binding.progressBarTv.visibility = View.VISIBLE
-                        is Resource.Success -> {
-                            binding.progressBarTv.visibility = View.GONE
-                            movieTvAdapter.setData(movieTv.data)
-                        }
-                        is Resource.Error -> {
-                            binding.progressBarTv.visibility = View.GONE
-                            binding.viewErrorMovietv.root.visibility = View.VISIBLE
-                            binding.viewErrorMovietv.tvError.text = movieTv.message ?: getString(R.string.something_wrong)
-                        }
+                when (movieTv) {
+                    is Resource.Loading -> binding.progressBarTv.visibility = View.VISIBLE
+                    is Resource.Success -> {
+                        binding.progressBarTv.visibility = View.GONE
+                        movieTvAdapter.setData(movieTv.data)
+                    }
+                    is Resource.Error -> {
+                        binding.progressBarTv.visibility = View.GONE
+                        binding.viewErrorMovietv.root.visibility = View.VISIBLE
+                        binding.viewErrorMovietv.tvError.text =
+                            movieTv.message ?: getString(R.string.something_wrong)
                     }
                 }
             })

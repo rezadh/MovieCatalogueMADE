@@ -18,7 +18,7 @@ object DataMapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 imagePath = it.imagePath,
-                false
+                isFavorite = false
             )
             movieList.add(movie)
         }
@@ -35,7 +35,7 @@ object DataMapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 imagePath = it.imagePath,
-                false
+                isFavorite = false
             )
             movieTvList.add(movie)
         }
@@ -51,7 +51,7 @@ object DataMapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 imagePath = it.imagePath,
-                false
+                isFavorite = false
             )
         }
 
@@ -64,7 +64,7 @@ object DataMapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 imagePath = it.imagePath,
-                false
+                isFavorite = false
             )
         }
 
