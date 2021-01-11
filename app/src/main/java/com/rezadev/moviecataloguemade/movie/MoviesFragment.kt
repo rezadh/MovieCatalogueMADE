@@ -40,17 +40,19 @@ class MoviesFragment : Fragment() {
                 startActivity(intent)
             }
             movieViewModel.movie.observe(viewLifecycleOwner, { movie ->
-                when (movie) {
-                    is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
-                    is Resource.Success -> {
-                        binding.progressBar.visibility = View.GONE
-                        movieAdapter.setData(movie.data)
-                    }
-                    is Resource.Error -> {
-                        binding.progressBar.visibility = View.GONE
-                        binding.viewError.root.visibility = View.VISIBLE
-                        binding.viewError.tvError.text =
-                            movie.message ?: getString(R.string.something_wrong)
+                if (movie != null){
+                    when (movie) {
+                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is Resource.Success -> {
+                            binding.progressBar.visibility = View.GONE
+                            movieAdapter.setData(movie.data)
+                        }
+                        is Resource.Error -> {
+                            binding.progressBar.visibility = View.GONE
+                            binding.viewError.root.visibility = View.VISIBLE
+                            binding.viewError.tvError.text =
+                                    movie.message ?: getString(R.string.something_wrong)
+                        }
                     }
                 }
             })

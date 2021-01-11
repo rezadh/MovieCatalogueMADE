@@ -51,7 +51,7 @@ object DataMapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 imagePath = it.imagePath,
-                isFavorite = false
+                isFavorite = it.isFavorite
             )
         }
 
@@ -64,7 +64,7 @@ object DataMapper {
                 releaseDate = it.releaseDate,
                 voteAverage = it.voteAverage,
                 imagePath = it.imagePath,
-                isFavorite = false
+                isFavorite = it.isFavorite
             )
         }
 
