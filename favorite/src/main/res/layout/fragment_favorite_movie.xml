@@ -17,21 +17,19 @@
         tools:listitem="@layout/items_movie_tv">
 
     </androidx.recyclerview.widget.RecyclerView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <TextView
         android:id="@+id/view_empty"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/empty_data"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="4dp"
-            android:gravity="center"
-            android:text="@string/empty_data"
-            android:textSize="18sp" />
-
-    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

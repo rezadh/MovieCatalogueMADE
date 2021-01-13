@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rezadev.moviecataloguemade.R
@@ -18,15 +19,15 @@ class MoviesFragment : Fragment() {
     private val movieViewModel: MoviesViewModel by viewModel()
 
     private var _binding: FragmentMoviesBinding? = null
-    private val binding get() = _binding!!
+    private val binding get() = _binding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): ConstraintLayout? {
         _binding = FragmentMoviesBinding.inflate(inflater, container, false)
-        return binding.root
+        return binding?.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,24 +43,24 @@ class MoviesFragment : Fragment() {
             movieViewModel.movie.observe(viewLifecycleOwner, { movie ->
                 if (movie != null){
                     when (movie) {
-                        is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
+                        is Resource.Loading -> binding?.progressBar?.visibility = View.VISIBLE
                         is Resource.Success -> {
-                            binding.progressBar.visibility = View.GONE
+                            binding?.progressBar?.visibility = View.GONE
                             movieAdapter.setData(movie.data)
                         }
                         is Resource.Error -> {
-                            binding.progressBar.visibility = View.GONE
-                            binding.viewError.root.visibility = View.VISIBLE
-                            binding.viewError.tvError.text =
+                            binding?.progressBar?.visibility = View.GONE
+                            binding?.viewError?.root?.visibility = View.VISIBLE
+                            binding?.viewError?.tvError?.text =
                                     movie.message ?: getString(R.string.something_wrong)
                         }
                     }
                 }
             })
-            with(binding.rvMovies) {
-                layoutManager = LinearLayoutManager(context)
-                setHasFixedSize(true)
-                adapter = movieAdapter
+            with(binding?.rvMovies) {
+                this?.layoutManager = LinearLayoutManager(context)
+                this?.setHasFixedSize(true)
+                this?.adapter = movieAdapter
             }
         }
     }
